@@ -25,7 +25,9 @@
                     <a class="card-link" href="/event/{{$event->id}}">Saiba mais</a>
                 </div>
             @endforeach
-
+            @if (count($events) == 0)
+                <p>Não ha eventos disponíveis</p>
+            @endif
         </div>
     </div>
 
