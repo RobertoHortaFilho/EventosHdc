@@ -11,6 +11,8 @@
         <input type="file" id="image" name="image">
         <label for="title">Titulo</label>
         <input type="text" name="title" id="title" placeholder="Nome do evento">
+        <label for="date">Data do evento</label>
+        <input type="date" name="date" id="date" placeholder="Nome do evento">
         <label for="city">Cidade</label>
         <input type="text" name="city" id="city" placeholder="Local do evento">
         <label for="private">O evento é privado?</label>

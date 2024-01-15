@@ -18,7 +18,7 @@
         <div id="cards-container" class="row">
             @foreach ($events as $event)
                 <div class="card">
-                    <p class="card-date">10/09/24</p>
+                    <p class="card-date">{{ date('d/m/Y', strToTime($event->date))}}</p>
                     <img src={{$event->image ? "/img/events/" . $event->image : "images/event.jpeg"}} alt={{ $event->title }}>
                     <h5 class="card-title">{{ $event->title }}</h5>
                     <h5 class="card-participants">X participantes</h5>
