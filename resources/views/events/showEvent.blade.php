@@ -12,9 +12,9 @@
   </div>
   <div id="right">
     <h2>{{ $event->title }}</h2>
-    <p><ion-icon name="location-outline" class="icones"></ion-icon>{{$event->city}}</p>
-    <p><ion-icon name="people-outline" class="icones"></ion-icon>X Participantes</p>
-    <p><ion-icon name="star-outline" class="icones"></ion-icon>Dono do evento</p>
+    <p><ion-icon name="location-outline" class="icones"></ion-icon> {{$event->city}}</p>
+    <p><ion-icon name="people-outline" class="icones"></ion-icon> X Participantes</p>
+    <p><ion-icon name="star-outline" class="icones"></ion-icon> {{$eventOwner['name']}}</p>
     @if (isset($event['items']))
       <h6>O evento conta com:</h6>
       <ul>
