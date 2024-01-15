@@ -1,0 +1,54 @@
+#principal {
+  display: flex;
+
+}
+
+#left {
+  width: 55%;
+}
+
+#right {
+  margin-left: 5%;
+  width: 40%;
+}
+
+#left img {
+  margin: 20px 5%;
+  width: 90%;
+  border-radius: 15px;
+}
+
+#left h2 {
+  margin-left: 5%;
+  font-size: 1.5em;
+}
+#left p {
+  margin-left: 5%;
+  font-size: 1em;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+#right h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+#right p {
+  font-size: 1em;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+
+#right h6 {
+  font-size: 1.3em;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+#right li {
+  text-decoration: none;
+  list-style: none;
+  margin-left: 13px;
+  margin-bottom: 5px;
+}
