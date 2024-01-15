@@ -1,15 +1,31 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.main')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-welcome />
-            </div>
+@section('title', 'Home')
+
+
+@section('section')
+    <link rel="stylesheet" href="/css/home.css">
+
+    <div class="event-container">
+        <h1>Veja os Seus eventos </h1>
+        <div id="cards-container" class="row">
+            @foreach ($events as $event)
+                <div class="card">
+                    <p class="card-date">{{ date('d/m/Y', strToTime($event->date))}}</p>
+                    <img src={{$event->image ? "/img/events/" . $event->image : "images/event.jpeg"}} alt={{ $event->title }}>
+                    <h5 class="card-title">{{ $event->title }}</h5>
+                    <h5 class="card-participants">X participantes</h5>
+                    <a class="card-link buttom" href="/event/{{$event->id}}">Saiba mais</a>
+                    <a class="card-edit buttom" href="/">Editar</a>
+                    <a class="card-delete buttom" href="/">Excluir</a>
+                </div>
+            @endforeach
+            @if (count($events) == 0)
+                <p>Voce nao tem nenhum evento cadastrado. <a href="/event/create" class="ver-todos">Criar uma</a></p>
+            @endif
         </div>
     </div>
-</x-app-layout>
+
+
+
+@endsection

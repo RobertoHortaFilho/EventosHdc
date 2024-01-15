@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -31,9 +33,11 @@ class EventController extends Controller
     }
 
     public function show ($id = 1)
-    {
+    {   
         $event = Event::findOrFail($id);
-        return view('events/showEvent', ['event' => $event]);
+        $eventOwner = User::where('id', $event->user_id )->first()->toArray();
+
+        return view('events/showEvent', ['event' => $event, 'eventOwner' => $eventOwner]);
     }
 
     public function store(Request $request)
@@ -61,8 +65,14 @@ class EventController extends Controller
         $user = auth()->user();
         $event->user_id = $user->id;
 
-        
+
         $event->save();
         return redirect('/')->with('msg', 'Sucesso ao criar o evento!!');
+    }
+
+    public function dashboard() {
+        $user = auth()->user();        
+        $event = $user->events;
+        return view('dashboard', ['events' => $event]);
     }
 }
