@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="/css/home.css">
     <div class="search-container">
         <h2>Search</h2>
-        <form action="">
+        <form action="/" method="GET">
             <input type="text" name="search" id="search" placeholder="pesquisar...">
         </form>
     </div>
 
     <div class="event-container">
-        <h2>Proximos eventos</h2>
+        @if ($search)
+            <h2>Buscando por: {{$search}}</h2>
+        @else
+            <h2>Proximos eventos</h2>
+        @endif
         <p>Veja os eventos proximos</p>
         <div id="cards-container" class="row">
             @foreach ($events as $event)
@@ -25,8 +29,10 @@
                     <a class="card-link" href="/event/{{$event->id}}">Saiba mais</a>
                 </div>
             @endforeach
-            @if (count($events) == 0)
-                <p>Não ha eventos disponíveis</p>
+            @if (count($events) == 0 && $search)
+                <p>Não foi possivel encontrar nenhum evento com {{$search}}! <a href="/" class="ver-todos">Ver todos.</a></p>   
+            @elseif (count($events) == 0)
+                <p>Não ha eventos disponíveis</p>   
             @endif
         </div>
     </div>
