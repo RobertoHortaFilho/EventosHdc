@@ -14,8 +14,20 @@
         <li><h1>HDC</h1></li>
         <li><a href="/">Home</a></li>
         <li><a href="/event/create">Criar Evento</a></li>
-        <li><a href="/contact">Contato</a></li>
-        <li><a href="/register">Registre-se</a></li>
+        @auth
+            <li><a href="/dashboard">Meus eventos</a></li>
+            <li><form action="/logout" method="post">
+                @csrf
+                <a
+                    href="/logout"
+                    onclick="event.preventDefault(); this.closest('form').submit();"
+                >Sair</a>
+            </form></li>
+        @endauth
+        @guest
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Registre-se</a></li>
+        @endguest
     </ul>
     @if (session('msg'))
         <div class="event-msg-container">

@@ -22,7 +22,12 @@ Route::post('/events', [EventController::class, 'store']);
 Route::get('/event/{id?}', [EventController::class, 'show']);
 
 
-Route::get('/contact', [geralController::class, 'contact']);
-
-Route::get('/register', [geralController::class, 'register']);
-
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
